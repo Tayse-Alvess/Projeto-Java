@@ -48,7 +48,7 @@ public class TestaPessoa {
 		Pessoa encontrada = local.procurar("321.777.97-1");
 		System.out.println("\n" + "PROCURAR PESSOAS:");
 		if(encontrada == null){
-			System.out.println(" Pessoa não encontra ");
+			System.out.println(" Pessoa não encontrada!! ");
 		}
 		else{
 			System.out.println(
