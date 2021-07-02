@@ -1,4 +1,4 @@
-
+//Herança. Classe Aluno herda da Classe Pessoa.
 public class Aluno extends Pessoa {
 
 	private Curso curso;
@@ -13,7 +13,7 @@ public class Aluno extends Pessoa {
 		this.curso = curso;
 	}
 
-	// M�todos Get e Set
+	// Métodos Get e Set
 	public Curso getCurso() {
 		return curso;
 	}
