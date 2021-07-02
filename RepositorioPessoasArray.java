@@ -1,9 +1,6 @@
 
 public class RepositorioPessoasArray {
 
-	public static void main(String[] args) {
-	}
-
 	private Pessoa[] pessoas;
 	private int indice;
 
