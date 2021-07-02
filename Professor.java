@@ -6,12 +6,14 @@ public class Professor extends Pessoa {
 	public Professor() {
 
 	}
-
+	// Construtor da SuperClass
+	
 	public Professor(String nome, String cpf, int idade, double salario) {
 		super(nome, cpf, idade);
 		this.salario = salario;
 	}
-
+	
+	// Métodos Get e Set
 	public double getSalario() {
 		return salario;
 	}
@@ -22,7 +24,7 @@ public class Professor extends Pessoa {
 
 	@Override
 	public String toString() {
-		return super.toString() + "\n" + "Sal�rio: " + getSalario();
+		return super.toString() + "\n" + "Salário: " + getSalario();
 
 	}
 }
