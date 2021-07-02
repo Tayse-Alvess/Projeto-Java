@@ -6,7 +6,7 @@ public class TestaPessoa {
 		RepositorioPessoasArray local = new RepositorioPessoasArray(3);
 
 		// Cursos
-		Curso curso1 = new Curso(001, "An·lise e Desenvolvimento de Sistemas");
+		Curso curso1 = new Curso(001, "An√°lise e Desenvolvimento de Sistemas");
 		Curso curso2 = new Curso(002, "Psicologia");
 
 		System.out.println("CURSOS:" + "\n");
@@ -23,7 +23,7 @@ public class TestaPessoa {
 
 		// Alunos
 		Aluno aluno1 = new Aluno("Maria Fernanda", "123.456.78-9", 22, curso1);
-		Aluno aluno2 = new Aluno("JosÈ Henrique", "344.564.33-9", 20, curso2);
+		Aluno aluno2 = new Aluno("Jos√© Henrique", "344.564.33-9", 20, curso2);
 
 		System.out.println("\n" + "ALUNOS:");
 		System.out.println(aluno1.toString());
@@ -43,12 +43,23 @@ public class TestaPessoa {
 		System.out.println("\n" + "PROCURAR PESSOAS:");
 		System.out.println(
 				" \nA pessoa procurada foi: " + encontrada.getNome() + " portadora do CPF: " + aluno3.getCpf());
+		
+		//Procurando Pessoa inv√°lida
+		Pessoa encontrada = local.procurar("321.777.97-1");
+		System.out.println("\n" + "PROCURAR PESSOAS:");
+		if(encontrada == null){
+			System.out.println(" Pessoa n√£o encontra ");
+		}
+		else{
+			System.out.println(
+				" \nA pessoa procurada foi: " + encontrada.getNome() + " portadora do CPF: " + aluno3.getCpf());
+		}
 
 		// Remover uma Pessoa
 		System.out.println("\n" + "REMOVER PESSOAS:" + "\n");
 		encontrada = local.procurar("456.983.29-0");
 		if (encontrada == null) {
-			System.out.println("N„o existe pessoa com esse cpf informado!");
+			System.out.println("N√£o existe pessoa com esse cpf informado!");
 		} else {
 			local.remover("45698329-0");
 			System.out.println("A pessoa com o nome " + encontrada.getNome() + " foi removida!");
