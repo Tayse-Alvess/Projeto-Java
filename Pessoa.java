@@ -2,10 +2,12 @@ package negocios;
 
 public class Pessoa {
 	
+	// Atributos privados
 	private String nome;
 	private String cpf;
 	private int idade;
 	
+	// Construtores
 	public Pessoa() {
 		
 	}
@@ -16,6 +18,7 @@ public class Pessoa {
 		this.idade = idade;
 	}
 	
+	// Método Get e Set
 	public String getNome() {
 		return nome;
 	}
@@ -40,6 +43,7 @@ public class Pessoa {
 		this.idade = idade;
 	}
 
+	//Método toString
 	@Override
 	public String toString() {
 		return "\n" + "Nome: " + getNome() + "\n" + "CPF: " + getCpf() + "\n" + "Idade: " + getIdade();
