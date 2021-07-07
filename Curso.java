@@ -2,9 +2,11 @@ package negocios;
 
 public class Curso {
 
+	//Atributos privados
 	private double codigo;
 	private String nome;
 
+	//Construtores
 	public Curso() {
 
 	}
@@ -15,6 +17,7 @@ public class Curso {
 
 	}
 
+	//método Get e Set
 	public double getCodigo() {
 		return codigo;
 	}
@@ -31,6 +34,7 @@ public class Curso {
 		this.nome = nome;
 	}
 
+	//método toString
 	@Override
 	public String toString() {
 		return "Codigo do curso: " + getCodigo() + "\n" + "Nome do curso: " + getNome() + "\n";
