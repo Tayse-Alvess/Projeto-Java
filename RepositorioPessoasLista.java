@@ -3,10 +3,13 @@ import java.util.*;
 import negocios.Pessoa;
 import negocios.RepositorioPessoas;
 
+//RepositorioPessoasLista é uma Classe que herda da interface RepositorioPessoas.
 public class RepositorioPessoasLista implements RepositorioPessoas {
 	
+	//Atributo privado
 	private List <Pessoa> pessoas;
 	
+	//Construtores
 	public RepositorioPessoasLista() {
 		pessoas = new ArrayList<Pessoa>();
 	}
