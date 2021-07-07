@@ -34,7 +34,7 @@ Logo após instalação, baixar esse repositório com todos os arquivos necessá
 
 ## ⚙️ Executando os testes
 
-Assim que executar o Eclipe (ou outra IDE de preferência) abra todos os arquivos baixos do nosso GIT. Depois só executar e ver todo o processo acontecer.
+Assim que executar o Eclipe (ou outra IDE de preferência) abra todos os arquivos baixos do nosso GITHUB. Depois só executar e ver todo o processo acontecer.
 
 ## 📦 Desenvolvimento
 
