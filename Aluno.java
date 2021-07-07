@@ -3,6 +3,7 @@ package negocios;
 // Herança. Classe Aluno herda da Classe Pessoa
 public class Aluno extends Pessoa {
 
+	//Atributo privado
 	private Curso curso;
 
 	public Aluno() {
