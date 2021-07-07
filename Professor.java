@@ -1,8 +1,11 @@
 package negocios;
+//Herança. Classe Professor herda da Classe Pessoa
 public class Professor extends Pessoa {
 
+	//Atributo privado
 	private double salario;
 
+	//Construtor
 	public Professor() {
 
 	}
@@ -22,6 +25,7 @@ public class Professor extends Pessoa {
 		this.salario = salario;
 	}
 
+	//Método toString
 	@Override
 	public String toString() {
 		return super.toString() + "\n" + "Salário: " + getSalario();
