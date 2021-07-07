@@ -1,4 +1,4 @@
-
+package negocios;
 public class Professor extends Pessoa {
 
 	private double salario;
