@@ -65,4 +65,4 @@ Você também pode ver a lista de todos os [colaboradores](https://github.com/pa
 
 
 ---
-⌨️ com ❤️ por [Grupo 2](https://github.com/paolafrancinez/Projeto-Java) 😊
+Feito com ❤️ por [Grupo 2](https://github.com/paolafrancinez/Projeto-Java) 😊
