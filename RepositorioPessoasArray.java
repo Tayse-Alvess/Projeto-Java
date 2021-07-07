@@ -1,3 +1,5 @@
+package dados;
+import negocios.Pessoa;
 
 public class RepositorioPessoasArray {
 
