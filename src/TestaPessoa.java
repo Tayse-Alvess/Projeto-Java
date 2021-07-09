@@ -16,8 +16,8 @@ public class TestaPessoa {
 		Scanner input = new Scanner(System.in);
 
 		// Repositorios e Banco de Dados
-		RepositorioPessoasArray repArray = new RepositorioPessoasArray(10);
-		RepositorioPessoasLista repLista = new RepositorioPessoasLista();
+		RepositorioPessoasArray repArray = new RepositorioPessoasArray(2);
+		RepositorioPessoas repLista = new RepositorioPessoasLista(); //Polimorfismo
 		PessoaDAO banco = new Pessoa DAO();
 
 		// Criação de objetos
@@ -109,7 +109,16 @@ public class TestaPessoa {
 
 					// Salvar o cadastro do Aluno no Array, na Lista e no Banco de Dados
 					Aluno aluno = new Aluno(nome, cpf, idade, curso);
-					repArray.inserir(aluno);
+					
+					/*Verifica se está no limite da quantidade de pessoas que podem ser
+					  armazenadas no Array*/
+					try{
+						repArray.inserir(aluno);
+					}
+					catch(ArrayIndexOutOfBoundsException e){
+						System.out.println(e.getMessage());
+					}
+					
 					repLista.inserir(aluno);
 					banco.adicionaAluno(aluno);
 
@@ -124,7 +133,16 @@ public class TestaPessoa {
 
 					// Salvar o cadastro do Professor no Array, na Lista e no Banco de Dados
 					Professor professor = new Professor(nome, cpf, idade, salario);
-					repArray.inserir(professor);
+					
+					/*Verifica se está no limite da quantidade de pessoas que podem ser
+					  armazenadas no Array*/
+					try{
+						repArray.inserir(professor);
+					}
+					catch(ArrayIndexOutOfBoundsException e){
+						System.out.println(e.getMessage());
+					}
+
 					repLista.inserir(professor);
 					banco.adicionaProfessor(professor);
 
@@ -195,14 +213,13 @@ public class TestaPessoa {
 				String auxiliar = input.next();
 
 				// Primeiro é necessário verificar se existe pessoa com esse cpf
-				procurado = repArray.procurar(auxiliar);
+				procurado = repLista.procurar(auxiliar);
 				if (procurado == null)
 					System.out.println("\n" + "\n" + "Não há pessoa cadastrada com esse CPF!");
 
-				// Caso exista a pessoa, então remove tanto da Lista quanto do Array
+				// Caso exista a pessoa, então remove na Lista, no Array e no Banco de Dados
 				else {
-					//Remove no Array e na Lista
-					repArray.remover(auxiliar);
+					//Remove na Lista
 					repLista.remover(auxiliar);
 					
 					//Remove no Banco de Dados
@@ -210,6 +227,12 @@ public class TestaPessoa {
 						banco.removeAluno(auxiliar);
 					else
 						banco.removeProfessor(auxiliar);
+					
+					//Verifica se está no Array - É necessario porque Array está com tamanho 2
+					procurado = repArray.procurar(auxiliar);
+					//Remove no Array
+					if(procurado != null)
+						repArray.remover(auxiliar);
 					
 					//Dados da pessoa removida
 					System.out.println(procurado.toString());
