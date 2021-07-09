@@ -235,12 +235,18 @@ public class TestaPessoa {
 				
 				//Listagem de todos os alunos - Utilizando Banco de Dados
 				if(escolha == 1){
-					
+					//Mesma linha de raciocínio da Listagem de todas as pessoas, logo abaixo 
+					for (int i = 0; i < ((PessoaDAO) banco).getListaAluno().size(); i++) {
+						System.out.println(((PessoaDAO) banco).getListaAluno().get(i));
+					}
 				}
 					
 				//Listagem de todos os professores - Utilizando Banco de Dados
 				else if(escolha ==2){
-					
+					//Mesma linha de raciocínio da Listagem de todas as pessoas, logo abaixo 
+					for (int i = 0; i < ((PessoaDAO) banco).getListaProfessor().size(); i++) {
+						System.out.println(((PessoaDAO) banco).getListaProfessor().get(i));
+					}
 				}
 					
 				//Listagem de todas as pessoas - Utilizando Lista
@@ -250,7 +256,7 @@ public class TestaPessoa {
 				 	* pessoas Mas a formatação fica separado por "," e "]" Então utilizei um for,
 				 	* para percorrer esta lista e ir printando cada pessoa de cada vez
 				 	* (RepositorioPessoaLista) repLista).listarPessoas().size() --> Isso me retorna
-				 	* o tamanho da lista Em outras palavras, me retorna a quantidade de pessoas
+				 	* o tamanho da lista. Em outras palavras, me retorna a quantidade de pessoas
 				 	*/
 					for (int i = 0; i < ((RepositorioPessoasLista) repLista).listarPessoas().size(); i++) {
 						System.out.println(((RepositorioPessoasLista) repLista).listarPessoas().get(i));
