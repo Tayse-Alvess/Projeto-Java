@@ -6,10 +6,13 @@ public class RepositorioPessoasArray {
 	private Pessoa[] pessoas;
 	private int indice;
 
-	public RepositorioPessoasArray(int tamanho) {
-		indice = 0;
-		pessoas = new Pessoa[tamanho];
-
+	public RepositorioPessoasArray(int tamanho) throws ArrayIndexOutOfBoundsException {
+		if(indice == 2)
+			throw new ArrayIndexOutOfBoundsException();
+		else {
+			pessoa[indice] = a;
+			indice = indice + 1;
+		} 
 	}
 
 	public void inserir(Pessoa individuo) {
