@@ -7,22 +7,25 @@ import negocios.Curso;
 import negocios.Pessoa;
 import negocios.Professor;
 import negocios.RepositorioPessoas;
+import dados.PessoaDAO;
+
 public class TestaPessoa {
 
 	public static void main(String[] args) {
 
 		Scanner input = new Scanner(System.in);
 
-		// Repositorios
+		// Repositorios e Banco de Dados
 		RepositorioPessoasArray repArray = new RepositorioPessoasArray(10);
 		RepositorioPessoasLista repLista = new RepositorioPessoasLista();
+		PessoaDAO add = new Pessoa DAO();
 
-		// CriaÁ„o de objetos
+		// Cria√ß√£o de objetos
 		Curso curso = new Curso();
 
 		// Inicio - digitar letra por letra
 
-		String inicial = "Bem vindo ao Projeto de Java B·sico da Academia Accenture!";
+		String inicial = "Bem vindo ao Projeto de Java B√°sico da Academia Accenture!";
 		for (int i = 0; i < inicial.length(); i++) {
 			System.out.print(inicial.charAt(i));
 
@@ -33,7 +36,7 @@ public class TestaPessoa {
 		boolean on = true;
 		int escolha;
 
-		// Loop do menu, atÈ escolher a opÁ„o sair
+		// Loop do menu, at√© escolher a op√ß√£o sair
 		while (on == true) {
 			// Menu
 			System.out.println("-------- Menu -------- " + "\n");
@@ -49,7 +52,7 @@ public class TestaPessoa {
 			// Atualiza variavel de controle
 			escolha = 0;
 
-			// Seleciona uma opÁ„o
+			// Seleciona uma op√ß√£o
 			int selecao = 0;
 			selecao = input.nextInt();
 			System.out.println();
@@ -59,11 +62,11 @@ public class TestaPessoa {
 			case 1:
 				System.out.println("\n" + "-------- Cadastrar pessoa -------- " + "\n");
 
-				// Escolher se È Aluno ou Professor
+				// Escolher se √© Aluno ou Professor
 				System.out.println("\n" + "1. Aluno" + "\n" + "2. Professor");
 				System.out.print("Escolha 1 ou 2: ");
 				escolha = input.nextInt();
-				// Caso a pessoa digite algo diferente de 1 ou 2, È necess·rio escolher
+				// Caso a pessoa digite algo diferente de 1 ou 2, √© necess√°rio escolher
 				// novamente
 				while (escolha != 1 && escolha != 2) {
 					System.out.println("\n" + "Escolha invalida!");
@@ -87,7 +90,7 @@ public class TestaPessoa {
 					System.out.println("\n" + "1. Ciencia da Computacao" + "\n" + "2. Engenharia da Computacao");
 					System.out.print("Qual o curso? Escolha 1 ou 2: ");
 					escolha = input.nextInt();
-					// Caso a pessoa digite algo diferente de 1 ou 2, È necess·rio escolher
+					// Caso a pessoa digite algo diferente de 1 ou 2, √© necess√°rio escolher
 					// novamente
 					while (escolha != 1 && escolha != 2) {
 						System.out.println("\n" + "Escolha invalida!");
@@ -105,10 +108,13 @@ public class TestaPessoa {
 						curso.setNome("Engenharia da Computacao");
 					}
 
-					// Salvar o cadastro do Aluno no Array e na Lista
+					// Salvar o cadastro do Aluno no Array, na Lista e no Banco de Dados
 					Aluno aluno = new Aluno(nome, cpf, idade, curso);
 					repArray.inserir(aluno);
 					repLista.inserir(aluno);
+					
+					//TESTAR NO BANCO DE DADOS
+					add.adicionaAluno(aluno);
 
 					System.out.println("\n" + "\n" + "Aluno cadastrado!" + "\n");
 				}
@@ -119,10 +125,13 @@ public class TestaPessoa {
 					System.out.print("Digite o salario: ");
 					double salario = input.nextDouble();
 
-					// Salvar o cadastro do Professor no Array e na Lista
+					// Salvar o cadastro do Professor no Array, na Lista e no Banco de Dados
 					Professor professor = new Professor(nome, cpf, idade, salario);
 					repArray.inserir(professor);
 					repLista.inserir(professor);
+					
+					//TESTAR NO BANCO DE DADOS
+					add.adicionaProfessor(professor);
 
 					System.out.println("\n" + "\n" + "Professor cadastrado!" + "\n");
 				}
@@ -141,10 +150,10 @@ public class TestaPessoa {
 				 */
 				Pessoa procurado = repArray.procurar(input.next());
 
-				// Se retornar null, ent„o n„o existe. Caso exista, utilizei toString para o
+				// Se retornar null, ent√£o n√£o existe. Caso exista, utilizei toString para o
 				// print
 				if (procurado == null)
-					System.out.println("\n" + "\n" + "N„o h· pessoa cadastrada com esse CPF!");
+					System.out.println("\n" + "\n" + "N√£o h√° pessoa cadastrada com esse CPF!");
 				else
 					System.out.println("\n" + "\n" + "Pessoa encontrada!" + "\n" + procurado.toString());
 
@@ -158,12 +167,12 @@ public class TestaPessoa {
 				// Auxiliar recebe o CPF da pessoa a ser removida
 				String auxiliar = input.next();
 
-				// Primeiro È necess·rio verificar se existe pessoa com esse cpf
+				// Primeiro √© necess√°rio verificar se existe pessoa com esse cpf
 				procurado = repArray.procurar(auxiliar);
 				if (procurado == null)
-					System.out.println("\n" + "\n" + "N„o h· pessoa cadastrada com esse CPF!");
+					System.out.println("\n" + "\n" + "N√£o h√° pessoa cadastrada com esse CPF!");
 
-				// Caso exista a pessoa, ent„o remove tanto da Lista quanto do Array
+				// Caso exista a pessoa, ent√£o remove tanto da Lista quanto do Array
 				else {
 					repArray.remover(auxiliar);
 					repLista.remover(auxiliar);
@@ -176,8 +185,8 @@ public class TestaPessoa {
 				System.out.println("\n" + "-------- Listagem de dados -------- " + "\n");
 
 				/*
-				 * Quando se utiliza o mÈtodo listarPessoas, ele retorna uma Lista com todas as
-				 * pessoas Mas a formataÁ„o fica separado por "," e "]" Ent„o utilizei um for,
+				 * Quando se utiliza o m√©todo listarPessoas, ele retorna uma Lista com todas as
+				 * pessoas Mas a formata√ß√£o fica separado por "," e "]" Ent√£o utilizei um for,
 				 * para percorrer esta lista e ir printando cada pessoa de cada vez
 				 * (RepositorioPessoaLista) repLista).listarPessoas().size() --> Isso me retorna
 				 * o tamanho da lista Em outras palavras, me retorna a quantidade de pessoas
@@ -189,13 +198,13 @@ public class TestaPessoa {
 
 			// Sair
 			case 5:
-				// Atualiza a variavel e a aplicaÁ„o n„o mais volta para o Menu
+				// Atualiza a variavel e a aplica√ß√£o n√£o mais volta para o Menu
 				on = false;
 				break;
 
-			// OpÁ„o inv·lida - Qualquer outro numero digitado no menu ser· invalido
+			// Op√ß√£o inv√°lida - Qualquer outro numero digitado no menu ser√° invalido
 			default:
-				System.out.println("Opcao inv·lida! Por favor, escolha um n˙mero v·lido!");
+				System.out.println("Opcao inv√°lida! Por favor, escolha um n√∫mero v√°lido!");
 				break;
 			}
 
@@ -208,7 +217,7 @@ public class TestaPessoa {
 			System.out.print("\n" + "\n");
 		}
 
-		// Fim da aplicaÁ„o
+		// Fim da aplica√ß√£o
 		System.out.print("Encerrando em ");
 		System.out.print("3");
 		System.out.print(".");
@@ -220,7 +229,7 @@ public class TestaPessoa {
 		System.out.print(".");
 		System.out.print("1");
 
-		System.out.println("\n" + "AtÈ logo! :)");
+		System.out.println("\n" + "At√© logo! :)");
 		input.close();
 
 	}
