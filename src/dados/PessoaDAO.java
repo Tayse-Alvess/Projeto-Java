@@ -1,36 +1,31 @@
 package dados;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.*;
+import java.util.*;
+import negocio.Aluno;
+import negocio.Professor;
+import negocio.Curso;
 
-import negocios.Pessoa;
 
 public class PessoaDAO {
-
 	private Connection con = null;
 
 	public PessoaDAO() {	
 		this.con = new ConexaoFactory().getConnection();		
 	}
 
-	public void adiciona(Pessoa pessoa) {
+	public void adicionaAluno(Aluno aluno) {
 		
-		
-
-		String sql = "INSERT INTO aluno(Nome, CPF, Idade, Curso) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]')";
-		System.out.println(sql);
+		String sql = "INSERT INTO aluno(nome, cpf, idade, curso) VALUES(?,?,?,?)";
 
 		try {
 			PreparedStatement stmt = con.prepareStatement(sql);		
 			
-
-			stmt.setString(1, pessoa.getNome());			
-			stmt.setString(2, pessoa.getCpf());
-
+			stmt.setString(1, aluno.getNome());		
+			stmt.setString(2, aluno.getCpf());	
+			stmt.setInt(3, aluno.getIdade());
+			stmt.setString(4, aluno.getCurso().getNome());
+			
 			stmt.execute();
 			stmt.close();
 
@@ -40,31 +35,94 @@ public class PessoaDAO {
 		}
 	}
 	
-	public List<Pessoa> getLista() {
-		
-		List<Pessoa> contas = new ArrayList<Pessoa>();
-		
-		String sql = "SELECT * FROM conta";
+	public void adicionaProfessor(Professor professor) {
+
+		String sql = "INSERT INTO professor(nome, cpf, idade , salario) VALUES(?,?,?,?)";
+
+		try {
+			PreparedStatement stmt = con.prepareStatement(sql);		
+
+			stmt.setString(1, professor.getNome());		
+			stmt.setString(2, professor.getCpf());	
+			stmt.setInt(3, professor.getIdade());
+			stmt.setDouble(4, professor.getSalario());
+			
+			stmt.execute();
+			stmt.close();
+
+			System.out.println("Gravado!");
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	public void procuraAluno(String cpf) {
+
+		String sql = "SELECT * FROM aluno where cpf = ?";
+
 		try {
 			PreparedStatement stmt = con.prepareStatement(sql);
-			ResultSet rs = stmt.executeQuery();
-			
-			while(rs.next()){
-				Pessoa pessoa = new Pessoa (rs.getString("nome"),rs.getString("cpf"),rs.getInt("idade"));
-				pessoa.setNome(rs.getString("nome"));  
-				pessoa.setCpf(rs.getString("cpf"));			
-				pessoa.setIdade(rs.getInt("idade"));
-				
-				pessoa.add(pessoa);
-			}
-			
-			rs.close();
+
+			stmt.setString(1, cpf);			
+			stmt.execute();
 			stmt.close();
-			return pessoa;
-		} catch (SQLException e) {			
+
+			System.out.println("Aluno encontrado!");
+		} catch (SQLException e) {
 			throw new RuntimeException(e);
-		}		
-	}	
+		}
+	}
+
+	public void procuraProfessor(String cpf) {
+
+		String sql = "SELECT * FROM professor where cpf = ?";
+
+		try {
+			PreparedStatement stmt = con.prepareStatement(sql);
+
+			stmt.setString(1, cpf);			
+			stmt.execute();
+			stmt.close();
+
+			System.out.println("Professor encontrado!");
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	public void removeAluno(String cpf) {
+
+		String sql = "DELETE FROM aluno where cpf = ?";
+
+		try {
+			PreparedStatement stmt = con.prepareStatement(sql);
+
+			stmt.setString(1, cpf);
+			stmt.execute();
+			stmt.close();
+
+			System.out.println("Aluno removido!");
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	public void removeProfessor(String cpf) {
+
+		String sql = "DELETE FROM professor where cpf = ?";
+
+		try {
+			PreparedStatement stmt = con.prepareStatement(sql);
+
+			stmt.setString(1, cpf);
+			stmt.execute();
+			stmt.close();
+
+			System.out.println("Professor removido!");
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
 }
-
-
