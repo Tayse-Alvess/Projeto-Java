@@ -26,7 +26,7 @@ public class TestaPessoa {
 
 		// Inicio - digitar letra por letra
 
-		String inicial = "Bem vindo ao Projeto de Java Básico da Academia Accenture!";
+		String inicial = "Bem vindo ao Projeto de Java Basico da Academia Accenture!";
 		for (int i = 0; i < inicial.length(); i++) {
 			System.out.print(inicial.charAt(i));
 
@@ -53,7 +53,7 @@ public class TestaPessoa {
 			// Atualiza variavel de controle
 			escolha = 0;
 
-			// Seleciona uma opção
+			// Seleciona uma opcao
 			int selecao = 0;
 			selecao = input.nextInt();
 			System.out.println();
@@ -63,11 +63,11 @@ public class TestaPessoa {
 			case 1:
 				System.out.println("\n" + "-------- Cadastrar pessoa -------- " + "\n");
 
-				// Escolher se é Aluno ou Professor
+				// Escolher se nao Aluno ou Professor
 				System.out.println("\n" + "1. Aluno" + "\n" + "2. Professor");
 				System.out.print("Escolha 1 ou 2: ");
 				escolha = input.nextInt();
-				// Caso a pessoa digite algo diferente de 1 ou 2, é necessário escolher
+				// Caso a pessoa digite algo diferente de 1 ou 2, e necessario escolher
 				// novamente
 				while (escolha != 1 && escolha != 2) {
 					System.out.println("\n" + "Escolha invalida!");
@@ -90,7 +90,7 @@ public class TestaPessoa {
 					System.out.println("\n" + "\n" + "1. Ciencia da Computacao" + "\n" + "2. Engenharia da Computacao");
 					System.out.print("Qual o curso? Escolha 1 ou 2: ");
 					escolha = input.nextInt();
-					// Caso a pessoa digite algo diferente de 1 ou 2, é necessário escolher
+					// Caso a pessoa digite algo diferente de 1 ou 2, e necessario escolher
 					// novamente
 					while (escolha != 1 && escolha != 2) {
 						System.out.println("\n" + "Escolha invalida!");
@@ -111,7 +111,7 @@ public class TestaPessoa {
 					// Salvar o cadastro do Aluno no Array, na Lista e no Banco de Dados
 					Aluno aluno = new Aluno(nome, cpf, idade, curso);
 					
-					/*Verifica se está no limite da quantidade de pessoas que podem ser
+					/*Verifica se esta no limite da quantidade de pessoas que podem ser
 					  armazenadas no Array*/
 					try{
 						repArray.inserir(aluno);
@@ -161,7 +161,8 @@ public class TestaPessoa {
 				System.out.print("Escolha uma opcao: ");
 				escolha = input.nextInt();
 				
-				// Caso a pessoa digite algo diferente de 1 ou 2, é necessário escolher
+				
+				// Caso a pessoa digite algo diferente de 1 ou 2, e necessario escolher
 				// novamente
 				while (escolha != 1 && escolha != 2) {
 					System.out.println("\n" + "Escolha invalida!");
@@ -211,7 +212,7 @@ public class TestaPessoa {
 				// Primeiro é necessário verificar se existe pessoa com esse cpf
 				procurado = repLista.procurar(auxiliar);
 				if (procurado == null)
-					System.out.println("\n" + "\n" + "Não há pessoa cadastrada com esse CPF!");
+					System.out.println("\n" + "\n" + "Nao ha pessoa cadastrada com esse CPF!");
 
 				// Caso exista a pessoa, então remove na Lista, no Array e no Banco de Dados
 				else {
@@ -235,13 +236,13 @@ public class TestaPessoa {
 				}
 				break;
 
-			// Listagem de dados - Utilizando Lista e Banco de Dados
+			// Listagem de dados - Banco de Dados
 			case 4:
 				System.out.println("\n" + "-------- Listagem de dados -------- " + "\n");
 				System.out.println("1. Alunos");
 				System.out.println("2. Professores");
 				System.out.println("3. Todos");
-				System.out.print("Escolha uma opção: ");
+				System.out.print("Escolha uma opcao: ");
 				escolha = input.nextInt();
 				// Caso a pessoa digite algo diferente de 1 ou 2 ou 3, e necessario escolher
 				// novamente
@@ -252,45 +253,41 @@ public class TestaPessoa {
 				}
 				System.out.println();
 				
-				//Listagem de todos os alunos - Utilizando Banco de Dados
+				//Listagem de todos os alunos
 				if(escolha == 1){
-					//Mesma linha de raciocínio da Listagem de todas as pessoas, logo abaixo 
 					for (int i = 0; i < ((PessoaDAO) banco).getListaAluno().size(); i++) {
 						System.out.println(((PessoaDAO) banco).getListaAluno().get(i));
 					}
 				}
 					
-				//Listagem de todos os professores - Utilizando Banco de Dados
+				//Listagem de todos os professores
 				else if(escolha ==2){
-					//Mesma linha de raciocínio da Listagem de todas as pessoas, logo abaixo 
 					for (int i = 0; i < ((PessoaDAO) banco).getListaProfessor().size(); i++) {
 						System.out.println(((PessoaDAO) banco).getListaProfessor().get(i));
 					}
 				}
 					
-				//Listagem de todas as pessoas - Utilizando Lista
+				//Listagem de todas as pessoas
 				else{
-					/*
-				 	* Quando se utiliza o metodo listarPessoas, ele retorna uma Lista com todas as
-				 	* pessoas Mas a formatacao fica separado por "," e "]" Entao utilizei um for,
-				 	* para percorrer esta lista e ir printando cada pessoa de cada vez
-				 	* (RepositorioPessoaLista) repLista).listarPessoas().size() --> Isso me retorna
-				 	* o tamanho da lista. Em outras palavras, me retorna a quantidade de pessoas
-				 	*/
-					for (int i = 0; i < ((RepositorioPessoasLista) repLista).listarPessoas().size(); i++) {
-						System.out.println(((RepositorioPessoasLista) repLista).listarPessoas().get(i));
+					for (int i = 0; i < ((PessoaDAO) banco).getListaAluno().size(); i++) {
+						System.out.println(((PessoaDAO) banco).getListaAluno().get(i));
 					}
+					
+					for (int i = 0; i < ((PessoaDAO) banco).getListaProfessor().size(); i++) {
+						System.out.println(((PessoaDAO) banco).getListaProfessor().get(i));
+					}
+					
 				}
 				
 				break;
 
 			// Sair
 			case 5:
-				// Atualiza a variavel e a aplicacao não mais volta para o Menu
+				// Atualiza a variavel e a aplicacao nao mais volta para o Menu
 				on = false;
 				break;
 
-			// Opção inválida - Qualquer outro numero digitado no menu sera invalido
+			// Opção invalida - Qualquer outro numero digitado no menu sera invalido
 			default:
 				System.out.println("Opcao invalida! Por favor, escolha um numero valido!");
 				break;
@@ -317,7 +314,7 @@ public class TestaPessoa {
 		System.out.print(".");
 		System.out.print("1");
 
-		System.out.println("\n" + "Até logo! :)");
+		System.out.println("\n" + "Ate logo! :)");
 		input.close();
 
 	}
