@@ -11,8 +11,21 @@ import dados.PessoaDAO;
 import dados.ArrayIndexOutOfBoundsException;
 
 public class TestaPessoa {
+	
+	public static void esperar(int ms){
+        try{
+            Thread.sleep(ms);
+        }
+        catch(InterruptedException ex)
+        {
+            Thread.currentThread().interrupt();
+        }
+    }
 
 	public static void main(String[] args) {
+		
+		System.getProperties(); 
+	    System.getProperty("user.language");
 
 		Scanner input = new Scanner(System.in);
 
@@ -26,10 +39,10 @@ public class TestaPessoa {
 
 		// Inicio - digitar letra por letra
 
-		String inicial = "Bem vindo ao Projeto de Java Basico da Academia Accenture!";
+		String inicial = "Bem vindo ao Projeto de Java Básico da Academia Accenture!";
 		for (int i = 0; i < inicial.length(); i++) {
 			System.out.print(inicial.charAt(i));
-
+			esperar(70);
 		}
 		System.out.println("\n");
 
@@ -40,15 +53,16 @@ public class TestaPessoa {
 		// Loop do menu, ate escolher a opcao sair
 		while (on == true) {
 			// Menu
-			System.out.println("-------- Menu -------- " + "\n");
-
-			System.out.println("1. Cadastrar");
-			System.out.println("2. Procurar");
-			System.out.println("3. Remover");
-			System.out.println("4. Listagem de dados");
-			System.out.println("5. Sair");
-
-			System.out.print("\n" + "Escolha um numero: ");
+			System.out.print("|------------------------------------|\n");
+			System.out.print("|                Menu                |\n");
+            System.out.print("|------------------------------------|\n");
+            System.out.print("|  1 - Cadastrar                     |\n");
+            System.out.print("|  2 - Procurar                      |\n");
+            System.out.print("|  3 - Remover                       |\n");
+            System.out.print("|  4 - Listagem de Cadastros         |\n");
+            System.out.print("|  5 - Sair                          |\n");
+            System.out.print("|------------------------------------|\n");
+            System.out.print("Digite uma opção: ");
 
 			// Atualiza variavel de controle
 			escolha = 0;
@@ -61,16 +75,16 @@ public class TestaPessoa {
 
 			// Cadastrar pessoa
 			case 1:
-				System.out.println("\n" + "-------- Cadastrar pessoa -------- " + "\n");
+				System.out.println("\n" + "---------- Cadastrar Pessoa ---------- " + "\n");
 
 				// Escolher se nao Aluno ou Professor
-				System.out.println("\n" + "1. Aluno" + "\n" + "2. Professor");
+				System.out.println("1. Aluno" + "\n" + "2. Professor");
 				System.out.print("Escolha 1 ou 2: ");
 				escolha = input.nextInt();
 				// Caso a pessoa digite algo diferente de 1 ou 2, e necessario escolher
 				// novamente
 				while (escolha != 1 && escolha != 2) {
-					System.out.println("\n" + "Escolha invalida!");
+					System.out.println("\n" + "Escolha inválida!");
 					System.out.println("1. Aluno" + "\n" + "2. Professor");
 					System.out.print("Por favor, escolha 1 ou 2: ");
 					escolha = input.nextInt();
@@ -87,14 +101,14 @@ public class TestaPessoa {
 				// Caso tenha escolhido Aluno
 				if (escolha == 1) {
 					// Escolher curso
-					System.out.println("\n" + "\n" + "1. Ciencia da Computacao" + "\n" + "2. Engenharia da Computacao");
+					System.out.println("\n" + "1. Ciência da Computação" + "\n" + "2. Engenharia da Computação");
 					System.out.print("Qual o curso? Escolha 1 ou 2: ");
 					escolha = input.nextInt();
 					// Caso a pessoa digite algo diferente de 1 ou 2, e necessario escolher
 					// novamente
 					while (escolha != 1 && escolha != 2) {
-						System.out.println("\n" + "Escolha invalida!");
-						System.out.println("1. Ciencia da Computacao" + "\n" + "2. Engenharia da Computacao");
+						System.out.println("\n" + "Escolha inválida!");
+						System.out.println("1. Ciência da Computação" + "\n" + "2. Engenharia da Computação");
 						System.out.print("Por favor, escolha 1 ou 2: ");
 						escolha = input.nextInt();
 					}
@@ -102,10 +116,10 @@ public class TestaPessoa {
 					// De acordo com o curso escolhido
 					if (escolha == 1) {
 						curso.setCodigo(10);
-						curso.setNome("Ciencia da Computacao");
+						curso.setNome("Ciência da Computação");
 					} else {
 						curso.setCodigo(20);
-						curso.setNome("Engenharia da Computacao");
+						curso.setNome("Engenharia da Computação");
 					}
 
 					// Salvar o cadastro do Aluno no Array, na Lista e no Banco de Dados
@@ -120,10 +134,11 @@ public class TestaPessoa {
 						System.out.println(e.getMessage());
 					}
 					
+					System.out.println();
 					repLista.inserir(aluno);
 					banco.adicionaAluno(aluno);
 
-					System.out.println("\n" + "\n" + "Aluno cadastrado!" + "\n");
+					System.out.println("Aluno cadastrado!" + "\n");
 				}
 
 				// Caso tenha escolhido Professor
@@ -144,28 +159,30 @@ public class TestaPessoa {
 						System.out.println(e.getMessage());
 					}
 
+					System.out.println();
 					repLista.inserir(professor);
 					banco.adicionaProfessor(professor);
 
-					System.out.println("\n" + "\n" + "Professor cadastrado!" + "\n");
+					System.out.println("Professor cadastrado!" + "\n");
 				}
-
+				
+				esperar(400);
 				break;
 
 			// Procurar pessoa - Utilizando Lista
 			case 2:
-				System.out.println("\n" + "-------- Procurar -------- " + "\n");
+				System.out.println("\n" + "-------------- Procurar -------------- " + "\n");
 				
 				//Escolha entre procurar aluno ou professor
 				System.out.println("1. Aluno" + "\n" + "2. Professor");
-				System.out.print("Escolha uma opcao: ");
+				System.out.print("Escolha uma opção: ");
 				escolha = input.nextInt();
 				
 				
 				// Caso a pessoa digite algo diferente de 1 ou 2, e necessario escolher
 				// novamente
 				while (escolha != 1 && escolha != 2) {
-					System.out.println("\n" + "Escolha invalida!");
+					System.out.println("\n" + "Escolha inválida!");
 					System.out.println("1. Aluno" + "\n" + "2. Professor");
 					System.out.print("Por favor, escolha 1 ou 2: ");
 					escolha = input.nextInt();
@@ -179,43 +196,45 @@ public class TestaPessoa {
 				 */
 				Pessoa procurado = repLista.procurar(input.next());
 
-				// Se retornar null, entÃ£o nao existe. Caso exista, utilizei toString para o print
+				// Se retornar null, então nao existe. Caso exista, utilizei toString para o print
 				if (procurado == null)
-					System.out.println("\n" + "\n" + "Nao ha pessoa cadastrada com esse CPF!");
+					System.out.println("\n" + "\n" + "Nao há pessoa cadastrada com esse CPF!");
 				else
 					System.out.println("\n" + "\n" + "Pessoa encontrada!" + "\n" + procurado.toString());
 
+				esperar(400);
 				break;
 
 			// Remover pessoa
 			case 3:
-				System.out.println("\n" + "-------- Remover -------- " + "\n");
+				System.out.println("\n" + "-------------- Remover -------------- " + "\n");
 					
 				//Escolha entre remover aluno ou professor
 				System.out.println("1. Aluno" + "\n" + "2. Professor");
-				System.out.print("Escolha uma opcao: ");
+				System.out.print("Escolha uma opção: ");
 				escolha = input.nextInt();
 				
 				// Caso a pessoa digite algo diferente de 1 ou 2, Ã© necessÃ¡rio escolher
 				// novamente
 				while (escolha != 1 && escolha != 2) {
-					System.out.println("\n" + "Escolha invalida!");
+					System.out.println("\n" + "Escolha inválida!");
 					System.out.println("1. Aluno" + "\n" + "2. Professor");
 					System.out.print("Por favor, escolha 1 ou 2: ");
 					escolha = input.nextInt();
 				}	
 
-				System.out.println("Digite o CPF: ");
+				System.out.print("Digite o CPF: ");
 				// Auxiliar recebe o CPF da pessoa a ser removida
 				String auxiliar = input.next();
 
 				// Primeiro Ã© necessÃ¡rio verificar se existe pessoa com esse cpf
 				procurado = repLista.procurar(auxiliar);
 				if (procurado == null)
-					System.out.println("\n" + "\n" + "Nao ha pessoa cadastrada com esse CPF!");
+					System.out.println("\n" + "\n" + "Nao há pessoa cadastrada com esse CPF!");
 
 				// Caso exista a pessoa, entÃ£o remove na Lista, no Array e no Banco de Dados
 				else {
+					System.out.println();
 					//Remove na Lista
 					repLista.remover(auxiliar);
 					
@@ -233,21 +252,22 @@ public class TestaPessoa {
 					
 					//Dados da pessoa removida
 					System.out.println(procurado.toString());
+					esperar(400);
 				}
 				break;
 
 			// Listagem de dados - Banco de Dados
 			case 4:
-				System.out.println("\n" + "-------- Listagem de dados -------- " + "\n");
+				System.out.println("\n" + "--------- Listagem de dados --------- " + "\n");
 				System.out.println("1. Alunos");
 				System.out.println("2. Professores");
 				System.out.println("3. Todos");
-				System.out.print("Escolha uma opcao: ");
+				System.out.print("Escolha uma opção: ");
 				escolha = input.nextInt();
 				// Caso a pessoa digite algo diferente de 1 ou 2 ou 3, e necessario escolher
 				// novamente
 				while (escolha != 1 && escolha != 2 && escolha !=3) {
-					System.out.println("\n" + "Escolha invalida!");
+					System.out.println("\n" + "Escolha inválida!");
 					System.out.print("Por favor, escolha 1, 2 ou 3: ");
 					escolha = input.nextInt();
 				}
@@ -279,6 +299,7 @@ public class TestaPessoa {
 					
 				}
 				
+				esperar(400);
 				break;
 
 			// Sair
@@ -287,33 +308,46 @@ public class TestaPessoa {
 				on = false;
 				break;
 
-			// OpÃ§Ã£o invalida - Qualquer outro numero digitado no menu sera invalido
+			// Opcaoo invalida - Qualquer outro numero digitado no menu sera invalido
 			default:
 				System.out.println("Opcao invalida! Por favor, escolha um numero valido!");
 				break;
 			}
 
 			// Para sair caracter por caracter
-
+			esperar(200);
 			System.out.print("\n" + "Redirecionando");
+			esperar(200);
 			System.out.print(".");
+			esperar(200);
 			System.out.print(".");
+			esperar(200);
 			System.out.print(".");
+			esperar(200);
 			System.out.print("\n" + "\n");
 		}
 
-		// Fim da aplicaÃ§Ã£o
+		// Fim da aplicacao
 		System.out.print("Encerrando em ");
+		esperar(250);
 		System.out.print("3");
+		esperar(250);
 		System.out.print(".");
+		esperar(250);
 		System.out.print(".");
+		esperar(250);
 		System.out.print(".");
+		esperar(250);
 		System.out.print("2");
+		esperar(250);
 		System.out.print(".");
+		esperar(250);
 		System.out.print(".");
+		esperar(250);
 		System.out.print(".");
+		esperar(250);
 		System.out.print("1");
-
+		esperar(250);
 		System.out.println("\n" + "Ate logo! :)");
 		input.close();
 
