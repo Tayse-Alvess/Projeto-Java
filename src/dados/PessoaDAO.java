@@ -2,9 +2,9 @@ package dados;
 
 import java.sql.*;
 import java.util.*;
-import negocio.Aluno;
-import negocio.Professor;
-import negocio.Curso;
+import negocios.Aluno;
+import negocios.Professor;
+import negocios.Curso;
 
 
 public class PessoaDAO {
