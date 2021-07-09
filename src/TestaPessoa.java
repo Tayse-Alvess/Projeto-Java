@@ -39,7 +39,7 @@ public class TestaPessoa {
 
 		// Inicio - digitar letra por letra
 
-		String inicial = "Bem vindo ao Projeto de Java Básico da Academia Accenture!";
+		String inicial = "Bem vindo ao Projeto de Java BÃ¡sico da Academia Accenture!";
 		for (int i = 0; i < inicial.length(); i++) {
 			System.out.print(inicial.charAt(i));
 			esperar(70);
@@ -55,14 +55,14 @@ public class TestaPessoa {
 			// Menu
 			System.out.print("|------------------------------------|\n");
 			System.out.print("|                Menu                |\n");
-            System.out.print("|------------------------------------|\n");
-            System.out.print("|  1 - Cadastrar                     |\n");
-            System.out.print("|  2 - Procurar                      |\n");
-            System.out.print("|  3 - Remover                       |\n");
-            System.out.print("|  4 - Listagem de Cadastros         |\n");
-            System.out.print("|  5 - Sair                          |\n");
-            System.out.print("|------------------------------------|\n");
-            System.out.print("Digite uma opção: ");
+            		System.out.print("|------------------------------------|\n");
+            		System.out.print("|  1 - Cadastrar                     |\n");
+            		System.out.print("|  2 - Procurar                      |\n");
+            		System.out.print("|  3 - Remover                       |\n");
+            		System.out.print("|  4 - Listagem de Cadastros         |\n");
+            		System.out.print("|  5 - Sair                          |\n");
+            		System.out.print("|------------------------------------|\n");
+            		System.out.print("Digite uma opÃ§Ã£o: ");
 
 			// Atualiza variavel de controle
 			escolha = 0;
@@ -84,7 +84,7 @@ public class TestaPessoa {
 				// Caso a pessoa digite algo diferente de 1 ou 2, e necessario escolher
 				// novamente
 				while (escolha != 1 && escolha != 2) {
-					System.out.println("\n" + "Escolha inválida!");
+					System.out.println("\n" + "Escolha invÃ¡lida!");
 					System.out.println("1. Aluno" + "\n" + "2. Professor");
 					System.out.print("Por favor, escolha 1 ou 2: ");
 					escolha = input.nextInt();
@@ -101,14 +101,14 @@ public class TestaPessoa {
 				// Caso tenha escolhido Aluno
 				if (escolha == 1) {
 					// Escolher curso
-					System.out.println("\n" + "1. Ciência da Computação" + "\n" + "2. Engenharia da Computação");
+					System.out.println("\n" + "1. CiÃªncia da ComputaÃ§Ã£o" + "\n" + "2. Engenharia da ComputaÃ§Ã£o");
 					System.out.print("Qual o curso? Escolha 1 ou 2: ");
 					escolha = input.nextInt();
 					// Caso a pessoa digite algo diferente de 1 ou 2, e necessario escolher
 					// novamente
 					while (escolha != 1 && escolha != 2) {
-						System.out.println("\n" + "Escolha inválida!");
-						System.out.println("1. Ciência da Computação" + "\n" + "2. Engenharia da Computação");
+						System.out.println("\n" + "Escolha invÃ¡lida!");
+						System.out.println("1. CiÃªncia da ComputaÃ§Ã£o" + "\n" + "2. Engenharia da ComputaÃ§Ã£o");
 						System.out.print("Por favor, escolha 1 ou 2: ");
 						escolha = input.nextInt();
 					}
@@ -116,10 +116,10 @@ public class TestaPessoa {
 					// De acordo com o curso escolhido
 					if (escolha == 1) {
 						curso.setCodigo(10);
-						curso.setNome("Ciência da Computação");
+						curso.setNome("CiÃªncia da ComputaÃ§Ã£o");
 					} else {
 						curso.setCodigo(20);
-						curso.setNome("Engenharia da Computação");
+						curso.setNome("Engenharia da ComputaÃ§Ã£o");
 					}
 
 					// Salvar o cadastro do Aluno no Array, na Lista e no Banco de Dados
@@ -175,14 +175,14 @@ public class TestaPessoa {
 				
 				//Escolha entre procurar aluno ou professor
 				System.out.println("1. Aluno" + "\n" + "2. Professor");
-				System.out.print("Escolha uma opção: ");
+				System.out.print("Escolha uma opÃ§Ã£o: ");
 				escolha = input.nextInt();
 				
 				
 				// Caso a pessoa digite algo diferente de 1 ou 2, e necessario escolher
 				// novamente
 				while (escolha != 1 && escolha != 2) {
-					System.out.println("\n" + "Escolha inválida!");
+					System.out.println("\n" + "Escolha invÃ¡lida!");
 					System.out.println("1. Aluno" + "\n" + "2. Professor");
 					System.out.print("Por favor, escolha 1 ou 2: ");
 					escolha = input.nextInt();
@@ -196,9 +196,9 @@ public class TestaPessoa {
 				 */
 				Pessoa procurado = repLista.procurar(input.next());
 
-				// Se retornar null, então nao existe. Caso exista, utilizei toString para o print
+				// Se retornar null, entÃ£o nao existe. Caso exista, utilizei toString para o print
 				if (procurado == null)
-					System.out.println("\n" + "\n" + "Nao há pessoa cadastrada com esse CPF!");
+					System.out.println("\n" + "\n" + "Nao hÃ¡ pessoa cadastrada com esse CPF!");
 				else
 					System.out.println("\n" + "\n" + "Pessoa encontrada!" + "\n" + procurado.toString());
 
@@ -211,13 +211,13 @@ public class TestaPessoa {
 					
 				//Escolha entre remover aluno ou professor
 				System.out.println("1. Aluno" + "\n" + "2. Professor");
-				System.out.print("Escolha uma opção: ");
+				System.out.print("Escolha uma opÃ§Ã£o: ");
 				escolha = input.nextInt();
 				
-				// Caso a pessoa digite algo diferente de 1 ou 2, Ã© necessÃ¡rio escolher
+				// Caso a pessoa digite algo diferente de 1 ou 2, ÃƒÂ© necessÃƒÂ¡rio escolher
 				// novamente
 				while (escolha != 1 && escolha != 2) {
-					System.out.println("\n" + "Escolha inválida!");
+					System.out.println("\n" + "Escolha invÃ¡lida!");
 					System.out.println("1. Aluno" + "\n" + "2. Professor");
 					System.out.print("Por favor, escolha 1 ou 2: ");
 					escolha = input.nextInt();
@@ -227,12 +227,12 @@ public class TestaPessoa {
 				// Auxiliar recebe o CPF da pessoa a ser removida
 				String auxiliar = input.next();
 
-				// Primeiro Ã© necessÃ¡rio verificar se existe pessoa com esse cpf
+				// Primeiro ÃƒÂ© necessÃƒÂ¡rio verificar se existe pessoa com esse cpf
 				procurado = repLista.procurar(auxiliar);
 				if (procurado == null)
-					System.out.println("\n" + "\n" + "Nao há pessoa cadastrada com esse CPF!");
+					System.out.println("\n" + "\n" + "Nao hÃ¡ pessoa cadastrada com esse CPF!");
 
-				// Caso exista a pessoa, entÃ£o remove na Lista, no Array e no Banco de Dados
+				// Caso exista a pessoa, entÃƒÂ£o remove na Lista, no Array e no Banco de Dados
 				else {
 					System.out.println();
 					//Remove na Lista
@@ -262,12 +262,12 @@ public class TestaPessoa {
 				System.out.println("1. Alunos");
 				System.out.println("2. Professores");
 				System.out.println("3. Todos");
-				System.out.print("Escolha uma opção: ");
+				System.out.print("Escolha uma opÃ§Ã£o: ");
 				escolha = input.nextInt();
 				// Caso a pessoa digite algo diferente de 1 ou 2 ou 3, e necessario escolher
 				// novamente
 				while (escolha != 1 && escolha != 2 && escolha !=3) {
-					System.out.println("\n" + "Escolha inválida!");
+					System.out.println("\n" + "Escolha invÃ¡lida!");
 					System.out.print("Por favor, escolha 1, 2 ou 3: ");
 					escolha = input.nextInt();
 				}
