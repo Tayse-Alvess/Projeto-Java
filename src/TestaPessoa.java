@@ -151,7 +151,7 @@ public class TestaPessoa {
 
 				break;
 
-			// Procurar pessoa
+			// Procurar pessoa - Utilizando Lista
 			case 2:
 				System.out.println("\n" + "-------- Procurar -------- " + "\n");
 				
@@ -171,18 +171,13 @@ public class TestaPessoa {
 				
 				System.out.print("Digite o CPF: ");
 				
-				//FALTA COMPLETAR AQUI PARA UTILIZAR BANCO DE DADOS
-				//Utilizar retorno boolean para banco.procuraAluno e banco.procuraProfessor
-				
-				
 				/*
-				 * Procurar no repositorio(repArray.procurar) o cpf digitado Valor retorna para
+				 * Procurar no repositorio(repLista.procurar) o cpf digitado Valor retorna para
 				 * o "procurado"
 				 */
-				Pessoa procurado = repArray.procurar(input.next());
+				Pessoa procurado = repLista.procurar(input.next());
 
-				// Se retornar null, então não existe. Caso exista, utilizei toString para o
-				// print
+				// Se retornar null, então não existe. Caso exista, utilizei toString para o print
 				if (procurado == null)
 					System.out.println("\n" + "\n" + "Não há pessoa cadastrada com esse CPF!");
 				else
