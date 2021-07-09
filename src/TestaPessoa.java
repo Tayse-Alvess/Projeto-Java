@@ -18,7 +18,7 @@ public class TestaPessoa {
 		// Repositorios e Banco de Dados
 		RepositorioPessoasArray repArray = new RepositorioPessoasArray(10);
 		RepositorioPessoasLista repLista = new RepositorioPessoasLista();
-		PessoaDAO add = new Pessoa DAO();
+		PessoaDAO banco = new Pessoa DAO();
 
 		// Criação de objetos
 		Curso curso = new Curso();
@@ -82,12 +82,11 @@ public class TestaPessoa {
 				String cpf = input.next();
 				System.out.print("Digite a idade: ");
 				int idade = input.nextInt();
-				System.out.println();
 
 				// Caso tenha escolhido Aluno
 				if (escolha == 1) {
 					// Escolher curso
-					System.out.println("\n" + "1. Ciencia da Computacao" + "\n" + "2. Engenharia da Computacao");
+					System.out.println("\n" + "\n" + "1. Ciencia da Computacao" + "\n" + "2. Engenharia da Computacao");
 					System.out.print("Qual o curso? Escolha 1 ou 2: ");
 					escolha = input.nextInt();
 					// Caso a pessoa digite algo diferente de 1 ou 2, é necessário escolher
@@ -112,9 +111,7 @@ public class TestaPessoa {
 					Aluno aluno = new Aluno(nome, cpf, idade, curso);
 					repArray.inserir(aluno);
 					repLista.inserir(aluno);
-					
-					//TESTAR NO BANCO DE DADOS
-					add.adicionaAluno(aluno);
+					banco.adicionaAluno(aluno);
 
 					System.out.println("\n" + "\n" + "Aluno cadastrado!" + "\n");
 				}
@@ -129,21 +126,37 @@ public class TestaPessoa {
 					Professor professor = new Professor(nome, cpf, idade, salario);
 					repArray.inserir(professor);
 					repLista.inserir(professor);
-					
-					//TESTAR NO BANCO DE DADOS
-					add.adicionaProfessor(professor);
+					banco.adicionaProfessor(professor);
 
 					System.out.println("\n" + "\n" + "Professor cadastrado!" + "\n");
 				}
 
 				break;
 
-			// Procurar pessoa - Utilizando Array
+			// Procurar pessoa
 			case 2:
 				System.out.println("\n" + "-------- Procurar -------- " + "\n");
-
+				
+				//Escolha entre procurar aluno ou professor
+				System.out.println("1. Aluno" + "\n" + "2. Professor");
+				System.out.print("Escolha uma opção: ");
+				escolha = input.next();
+				
+				// Caso a pessoa digite algo diferente de 1 ou 2, é necessário escolher
+				// novamente
+				while (escolha != 1 && escolha != 2) {
+					System.out.println("\n" + "Escolha invalida!");
+					System.out.println("1. Aluno" + "\n" + "2. Professor");
+					System.out.print("Por favor, escolha 1 ou 2: ");
+					escolha = input.nextInt();
+				}	
+				
 				System.out.print("Digite o CPF: ");
-
+				
+				//FALTA COMPLETAR AQUI PARA UTILIZAR BANCO DE DADOS
+				//Utilizar retorno boolean para banco.procuraAluno e banco.procuraProfessor
+				
+				
 				/*
 				 * Procurar no repositorio(repArray.procurar) o cpf digitado Valor retorna para
 				 * o "procurado"
@@ -159,9 +172,23 @@ public class TestaPessoa {
 
 				break;
 
-			// Remover pessoa - Utilizando Array
+			// Remover pessoa
 			case 3:
 				System.out.println("\n" + "-------- Remover -------- " + "\n");
+					
+				//Escolha entre remover aluno ou professor
+				System.out.println("1. Aluno" + "\n" + "2. Professor");
+				System.out.print("Escolha uma opção: ");
+				escolha = input.next();
+				
+				// Caso a pessoa digite algo diferente de 1 ou 2, é necessário escolher
+				// novamente
+				while (escolha != 1 && escolha != 2) {
+					System.out.println("\n" + "Escolha invalida!");
+					System.out.println("1. Aluno" + "\n" + "2. Professor");
+					System.out.print("Por favor, escolha 1 ou 2: ");
+					escolha = input.nextInt();
+				}	
 
 				System.out.println("Digite o CPF: ");
 				// Auxiliar recebe o CPF da pessoa a ser removida
@@ -174,13 +201,22 @@ public class TestaPessoa {
 
 				// Caso exista a pessoa, então remove tanto da Lista quanto do Array
 				else {
+					//Remove no Array e na Lista
 					repArray.remover(auxiliar);
 					repLista.remover(auxiliar);
-					System.out.println("\n" + "\n" + "Pessoa removida!" + "\n" + procurado.toString());
+					
+					//Remove no Banco de Dados
+					if(escolha == 1)
+						banco.removeAluno(auxiliar);
+					else
+						banco.removeProfessor(auxiliar);
+					
+					//Dados da pessoa removida
+					System.out.println(procurado.toString());
 				}
 				break;
 
-			// Listagem de dados - Utilizando Lista
+			// Listagem de dados - Utilizando Lista e Banco de Dados
 			case 4:
 				System.out.println("\n" + "-------- Listagem de dados -------- " + "\n");
 
