@@ -12,7 +12,7 @@ public class ConexaoFactory {
 			
 			DriverManager.registerDriver(new com.mysql.jdbc.Driver()); 
 			
-			Connection conexao = DriverManager.getConnection("jdbc:mysql://localhost/sistemabancario", "root", "");
+			Connection conexao = DriverManager.getConnection("jdbc:mysql://localhost/repositorio", "root", "");
 			return conexao;
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
