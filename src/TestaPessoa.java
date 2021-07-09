@@ -219,17 +219,44 @@ public class TestaPessoa {
 			// Listagem de dados - Utilizando Lista e Banco de Dados
 			case 4:
 				System.out.println("\n" + "-------- Listagem de dados -------- " + "\n");
-
-				/*
-				 * Quando se utiliza o método listarPessoas, ele retorna uma Lista com todas as
-				 * pessoas Mas a formatação fica separado por "," e "]" Então utilizei um for,
-				 * para percorrer esta lista e ir printando cada pessoa de cada vez
-				 * (RepositorioPessoaLista) repLista).listarPessoas().size() --> Isso me retorna
-				 * o tamanho da lista Em outras palavras, me retorna a quantidade de pessoas
-				 */
-				for (int i = 0; i < ((RepositorioPessoasLista) repLista).listarPessoas().size(); i++) {
-					System.out.println(((RepositorioPessoasLista) repLista).listarPessoas().get(i));
+				System.out.println("1. Alunos");
+				System.out.println("2. Professores");
+				System.out.println("3. Todos");
+				System.out.print("Escolha uma opção: ");
+				escolha = input.nextInt();
+				// Caso a pessoa digite algo diferente de 1 ou 2 ou 3, é necessário escolher
+				// novamente
+				while (escolha != 1 && escolha != 2 && escolha !=3) {
+					System.out.println("\n" + "Escolha invalida!");
+					System.out.print("Por favor, escolha 1, 2 ou 3: ");
+					escolha = input.nextInt();
 				}
+				System.out.println();
+				
+				//Listagem de todos os alunos - Utilizando Banco de Dados
+				if(escolha == 1){
+					
+				}
+					
+				//Listagem de todos os professores - Utilizando Banco de Dados
+				else if(escolha ==2){
+					
+				}
+					
+				//Listagem de todas as pessoas - Utilizando Lista
+				else{
+					/*
+				 	* Quando se utiliza o método listarPessoas, ele retorna uma Lista com todas as
+				 	* pessoas Mas a formatação fica separado por "," e "]" Então utilizei um for,
+				 	* para percorrer esta lista e ir printando cada pessoa de cada vez
+				 	* (RepositorioPessoaLista) repLista).listarPessoas().size() --> Isso me retorna
+				 	* o tamanho da lista Em outras palavras, me retorna a quantidade de pessoas
+				 	*/
+					for (int i = 0; i < ((RepositorioPessoasLista) repLista).listarPessoas().size(); i++) {
+						System.out.println(((RepositorioPessoasLista) repLista).listarPessoas().get(i));
+					}
+				}
+				
 				break;
 
 			// Sair
