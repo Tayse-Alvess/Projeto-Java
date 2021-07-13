@@ -1,20 +1,23 @@
 package negocios;
 
+//Classe curso
 public class Curso {
 
 	private double codigo;
 	private String nome;
-
+	
 	public Curso() {
 
 	}
-
+	
+	//Contrutor
 	public Curso(double codigo, String nome) {
 		this.codigo = codigo;
 		this.nome = nome;
 
 	}
-
+	
+	//metodos gets e sets
 	public double getCodigo() {
 		return codigo;
 	}
